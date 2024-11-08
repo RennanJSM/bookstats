@@ -21,7 +21,9 @@ const Home: React.FC = () => {
   return (
     <div className='container'>
       <h1>Página Principal</h1>
-      <SearchBar onSearch={handleSearch} />
+      <div className='search-bar-container'>
+        <SearchBar onSearch={handleSearch} />
+      </div>
       <Grid container spacing={2}>
         {books.map((book) => (
           <Grid item xs={12} sm={6} md={4} key={book.id}>
@@ -29,6 +31,8 @@ const Home: React.FC = () => {
               title={book.volumeInfo.title}
               authors={book.volumeInfo.authors || []}
               thumbnail={book.volumeInfo.imageLinks?.thumbnail}
+              averageRating={book.volumeInfo.averageRating}
+              categories={book.volumeInfo.categories}
             />
           </Grid>
         ))}

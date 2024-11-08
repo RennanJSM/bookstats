@@ -1,13 +1,15 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import { Card, CardContent, CardMedia, Grid, Rating, Typography } from '@mui/material';
 
 interface BookCardProps {
   title: string;
   authors: string[];
   thumbnail?: string;
+  averageRating?: number;
+  categories?: string[];
 }
 
-const BookCard: React.FC<BookCardProps> = ({ title, authors, thumbnail }) => {
+const BookCard: React.FC<BookCardProps> = ({ title, authors, thumbnail, averageRating, categories }) => {
   return (
     <Card sx={{ display: 'flex', marginBottom: 2, maxWidth: 600 }}>
       {thumbnail && (
@@ -25,6 +27,15 @@ const BookCard: React.FC<BookCardProps> = ({ title, authors, thumbnail }) => {
         <Typography variant="body2" color="text.secondary">
           Authors: {authors.join(', ')}
         </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Genre: {categories?.join(', ') || 'Unknown'}
+        </Typography>
+        {averageRating !== undefined && (
+          <div>
+            <Typography variant="body2">Rating:</Typography>
+            <Rating value={averageRating} readOnly precision={0.5} />
+          </div>
+        )}
       </CardContent>
     </Card>
   );
