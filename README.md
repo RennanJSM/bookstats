@@ -7,7 +7,6 @@ BookStats é uma aplicação web que permite aos usuários pesquisar livros, vis
 - [Sobre](#sobre)
 - [Funcionalidades](#funcionalidades)
 - [Instalação](#instalação)
-- [Uso](#uso)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 
 ## Sobre
