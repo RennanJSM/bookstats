@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Rating, Typography } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Rating, Typography } from '@mui/material';
 
 interface BookCardProps {
   title: string;
@@ -12,13 +12,28 @@ interface BookCardProps {
 const BookCard: React.FC<BookCardProps> = ({ title, authors, thumbnail, averageRating, categories }) => {
   return (
     <Card sx={{ display: 'flex', marginBottom: 2, maxWidth: 600 }}>
-      {thumbnail && (
+      {thumbnail ? (
         <CardMedia
           component="img"
           sx={{ width: 100 }}
           image={thumbnail}
           alt={title}
         />
+      ) : (
+        <Box
+          sx={{
+            width: 100,
+            height: 150,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#f0f0f0',
+            color: '#aaa',
+            fontSize: '0.875rem',
+          }}
+        >
+          No Cover
+        </Box>
       )}
       <CardContent>
         <Typography variant="h6" component="div">
