@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Card, CardContent, CardMedia, Rating, Typography } from '@mui/material';
+import { motion } from 'framer-motion';
 
 interface BookCardProps {
   title: string;
@@ -11,6 +12,11 @@ interface BookCardProps {
 
 const BookCard: React.FC<BookCardProps> = ({ title, authors, thumbnail, averageRating, categories }) => {
   return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }} // Ponto de partida da animação
+      animate={{ opacity: 1, y: 0 }}  // Ponto final da animação
+      transition={{ duration: 0.5, ease: "easeOut" }} // Duração e tipo de transição
+    >
     <Card sx={{ display: 'flex', marginBottom: 2, maxWidth: 600 }}>
       {thumbnail ? (
         <CardMedia
@@ -53,6 +59,7 @@ const BookCard: React.FC<BookCardProps> = ({ title, authors, thumbnail, averageR
         )}
       </CardContent>
     </Card>
+    </motion.div>
   );
 };
 

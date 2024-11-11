@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, IconButton, Box } from '@mui/material';
+import { motion } from 'framer-motion';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import Brightness2Icon from '@mui/icons-material/Brightness2';
 import { Link } from 'react-router-dom';
@@ -15,6 +16,11 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ isDarkMode, onThemeChange }) => {
   return (
+    <motion.div
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
     <AppBar position="static">
       <Toolbar>
       <Box display="flex" alignItems="center">
@@ -53,6 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, onThemeChange }) => {
         </Box>
       </Toolbar>
     </AppBar>
+    </motion.div>
   );
 };
 

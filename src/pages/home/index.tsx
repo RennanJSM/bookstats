@@ -4,6 +4,13 @@ import BookCard from '../../components/bookCard';
 import SearchBar from '../../components/searchBar';
 import { searchBooks } from '../../services/api';
 import { Grid } from '@mui/material';
+import { motion } from 'framer-motion';
+
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const Home: React.FC = () => {
   const [books, setBooks] = useState<any[]>([]);
@@ -24,9 +31,17 @@ const Home: React.FC = () => {
       <div className='search-bar-container'>
         <SearchBar onSearch={handleSearch} />
       </div>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: { transition: { staggerChildren: 0.1 } },
+        }}
+      >
       <Grid container spacing={2}>
         {books.map((book) => (
           <Grid item xs={12} sm={6} md={4} key={book.id}>
+            <motion.div variants={itemVariants}>
             <BookCard
               title={book.volumeInfo.title}
               authors={book.volumeInfo.authors || []}
@@ -34,9 +49,11 @@ const Home: React.FC = () => {
               averageRating={book.volumeInfo.averageRating}
               categories={book.volumeInfo.categories}
             />
+            </motion.div>
           </Grid>
         ))}
       </Grid>
+      </motion.div>
     </div>
   );
 };
