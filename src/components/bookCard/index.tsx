@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Grid, Rating, Typography } from '@mui/material';
+import { Card, CardContent, CardMedia, Rating, Typography } from '@mui/material';
 
 interface BookCardProps {
   title: string;
